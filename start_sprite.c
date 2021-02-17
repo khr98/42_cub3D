@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:28:07 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:34:42 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/17 15:37:40 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void			draw_sprite_ud(t_screen *scr)
 
 void			draw_sprite(t_screen *scr, int stripe)
 {
-	int		draw;
+	int		d;
 	int		color;
 	int		y;
 
@@ -42,8 +42,8 @@ void			draw_sprite(t_screen *scr, int stripe)
 		y = scr->ray_sprite.drawStartY;
 		while (y < scr->ray_sprite.drawEndY)
 		{
-			draw = y * 256 - scr->screen_height * 128 + scr->ray_sprite.height * 128;
-			scr->ray_sprite.texY = ((draw * TEX_HEIGHT) / scr->ray_sprite.height) / 256;
+			d = y * 256 - scr->screen_height * 128 + scr->ray_sprite.height * 128;
+			scr->ray_sprite.texY = ((d * TEX_HEIGHT) / scr->ray_sprite.height) / 256;
 			color = scr->texture[4][TEX_WIDTH * scr->ray_sprite.texY + scr->ray_sprite.texX];
 			if ((color & 0x00FFFFFF) != 0)
 				scr->buf[y][stripe] = color;

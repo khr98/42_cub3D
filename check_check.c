@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:25:38 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:28:48 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/17 14:52:06 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,3 +60,31 @@ int		check_map(int c)
 		return (1);
 	return (-1);
 }
+
+/*int		check_map2(char *line, int j)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = (int)ft_strlen(line);
+	if (j == 0 || j == map_height - 1)
+	{
+		while (line[i] == ' ')
+			i++;
+		while (line[i] == '1')
+			i++;
+		while (line[i] == ' ')
+			i++;
+		if (i != len)
+			print_error("map is invaild");
+	}
+	else
+	{
+		while (line[i] == ' ')
+			i++;
+		if (line[i] != '1')
+			print_error("map is invaild");
+		if (line[i - 1] != '1')
+			print_error("map is invaild");
+*/
