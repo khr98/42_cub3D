@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:26:55 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:36:14 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/19 00:52:17 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,17 @@ void			start_bmp(t_screen *scr)
 int			main(int argc, char *argv[])
 {
 	t_screen	scr;
+	t_count		count;
 	int		save;
 	
 	command_num(argc, argv[2], &save);
 	scr.fd = open(argv[1], O_RDONLY);
 	if (scr.fd == -1)
 		print_error("failed to open file");
-	map_info(&scr);
+	map_info(&scr, &count);
+	is_info_invaild(&scr);
 	read_map(&scr, scr.line);
+	is_map_invaild(&scr);
 	make_buffer(&scr);
 	make_texture(&scr);
 	fill_texture(&scr);

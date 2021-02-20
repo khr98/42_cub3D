@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:26:02 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 15:36:38 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 14:30:41 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@
 # define PI 3.1415926535897
 # define TEX_WIDTH 64
 # define TEX_HEIGHT 64
+
+typedef struct		s_count
+{
+	int		size;
+	int		east;
+	int		west;
+	int		south;
+	int		north;
+	int		s;
+	int		f;
+	int		c;
+}			t_count;
 
 typedef	struct		s_img
 {
@@ -134,80 +146,74 @@ typedef	struct		s_screen
 	t_ray_sprite	ray_sprite;
 }			t_screen;
 
-// end.c
 void			print_error(char *str);
 int			ft_exit(int ret);
 void			ft_free(void *s);
 void			ft_free2(char **s);
 void			all_free(t_screen *scr);
 
-// fill_texture.c
 void			make_image(t_screen * scr, int *texture, char *path, t_img *img);
 void			fill_texture(t_screen * scr);
 
-// init.c
 void			init_screen(t_screen *scr);
+void			init_count(t_count *count);
 
-// make_buffer.c
 void			make_buffer(t_screen *scr);
 void			make_texture(t_screen * scr);
 
-// make_player.c
 void			put_player(t_player * player, double radian);
 void			make_player(t_screen * scr, int i, int j, int *player_num);
 
-// map_info.c
-void			map_info(t_screen *scr);
-int			get_info(t_screen *scr, char *line);
-void			screen_size(t_screen *scr, char *line);
-void			get_texture(char *line, char **s);
-void			get_color(t_screen *scr, char *line, char c);
+void			map_info(t_screen *scr, t_count *count);
+int			get_info(t_screen *scr, char *line, t_count *count);
+void			screen_size(t_screen *scr, char *line, int count);
+void			get_texture(char *line, char **s, int count);
+void			get_color(t_screen *scr, char *line, char c, int count);
 
-// read_map.c
 void			read_map(t_screen *scr, char *line);
 int			find_width(t_list *lst);
 void			make_map_square(t_screen *scr, t_list *lst);
 void			fill_map(t_screen *scr, t_list *lst);
 void			make_sprite(t_screen * scr);
 
-// start_raycasting_2.c
 void			draw_line(t_screen *scr);
 void			exec_texture(t_screen *scr, int x);
 void			wall(t_screen * scr);
 void			make_dda(t_screen * scr);
 void			make_sideDist(t_screen * scr);
 
-//start_raycasting.c
 void			make_basic(t_screen * scr, int x);
 void			make_floor_ceiling(t_screen * scr);
 void			exec_raycasting(t_screen *scr);
 int			main_loop(t_screen *scr);
 void			start_raycasting(t_screen * scr);
 
-// key_press.c
 int			key_press(int key, t_screen *scr);
 void			move_u_d(int key, t_screen * scr);
 void			move_l_r(int key, t_screen *scr);
 void			rotate_right(t_screen *scr);
 void			rotate_left(t_screen *scr);
 
-
-// start_sprite.c
 void			draw_sprite_ud(t_screen *scr);
 void			draw_sprite(t_screen *scr, int pattern);
 void			start_sprite(t_screen *scr);
 
-// main.c
 void			int_to_byte(unsigned char * arr, int num);
 void			make_bmp_header(t_screen *scr, int fd, int bytePadding);
 void			draw_buf(t_screen *scr, int fd, int bytePadding);
 void			start_bmp(t_screen *scr);
 int			main(int argc, char *argv[]);
 
-//check_check.c
 void			command_num(int	argc, char *argv, int *save);
 char			*remove_space(char *line);
 int			check_direction(int c);
 int			check_map(int c);
+void			is_info_invaild(t_screen *scr);
+
+void			is_map_invaild(t_screen *scr);
+
+void			check_color_factor(char **rgb);
+int			search_file(char *line, char *xpm);
+void			factor_is_digit(char **s);
 
 #endif

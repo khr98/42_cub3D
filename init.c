@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:26:29 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:26:30 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/19 00:55:25 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,16 @@ void	init_screen(t_screen *scr)
 	scr->player.planeY = 0.66;
 	scr->player.moveSpeed = 0.1;
 	scr->player.rotSpeed = 0.05;
+}
+
+void	init_count(t_count *count)
+{
+	count->size = 0;
+	count->east = 0;
+	count->west = 0;
+	count->south = 0;
+	count->north = 0;
+	count->s = 0;
+	count->f = 0;
+	count->c = 0;
 }

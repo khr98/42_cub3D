@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:25:38 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 14:52:06 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/19 01:36:13 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,30 +61,14 @@ int		check_map(int c)
 	return (-1);
 }
 
-/*int		check_map2(char *line, int j)
+void		is_info_invaild(t_screen *scr)
 {
-	int	i;
-	int	len;
-
-	i = 0;
-	len = (int)ft_strlen(line);
-	if (j == 0 || j == map_height - 1)
-	{
-		while (line[i] == ' ')
-			i++;
-		while (line[i] == '1')
-			i++;
-		while (line[i] == ' ')
-			i++;
-		if (i != len)
-			print_error("map is invaild");
-	}
-	else
-	{
-		while (line[i] == ' ')
-			i++;
-		if (line[i] != '1')
-			print_error("map is invaild");
-		if (line[i - 1] != '1')
-			print_error("map is invaild");
-*/
+	if (!scr->screen_height || !scr->screen_width)
+		print_error("There is no screen size");
+	if (!scr->east_texture || !scr->west_texture
+			|| !scr->south_texture || !scr->north_texture
+			|| !scr->sprite_path)
+		print_error("There is no texture");
+	if (!scr->floor_color || !scr->ceiling_color)
+		print_error("There is no color");
+}

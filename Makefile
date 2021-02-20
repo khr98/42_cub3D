@@ -2,7 +2,7 @@ CC = gcc
 CLAGC = -Wall -Wextra -Werror
 NAME = cub3D
 RM = rm -f
-SRCS = check_check.c end.c fill_texture.c get_next_line.c init.c key_press.c main.c make_buffer.c make_player.c map_info.c read_map.c start_raycasting.c start_raycasting_2.c start_sprite.c
+SRCS = check_check.c end.c fill_texture.c get_next_line.c init.c key_press.c main.c make_buffer.c make_player.c map_info.c read_map.c start_raycasting.c start_raycasting_2.c start_sprite.c is_map_invaild.c check_check2.c
 OBJS = $(SRCS:.c=.o)
 LIBS = -L/Users/hyerim/cub3d -lmlx -framework OpenGL -framework Appkit -Llibft -lft
 LIBFT = ./libft
