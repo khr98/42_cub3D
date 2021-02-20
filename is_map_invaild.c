@@ -6,14 +6,14 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 16:09:12 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/20 14:24:07 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 15:00:58 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void		map_middle_in_wall(t_screen *scr, int i, int j)
-{	
+void	map_middle_in_wall(t_screen *scr, int i, int j)
+{
 	if (i > 0 && i < scr->map_height - 1)
 	{
 		if (scr->map[i - 1][j] == ' ' || scr->map[i + 1][j] == ' ')
@@ -36,7 +36,7 @@ int		map_middle(t_screen *scr)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (i < scr->map_height - 1)
 	{
@@ -57,7 +57,7 @@ int		map_middle(t_screen *scr)
 	return (i);
 }
 
-void		is_map_invaild(t_screen *scr)
+void	is_map_invaild(t_screen *scr)
 {
 	int	i;
 	int	j;

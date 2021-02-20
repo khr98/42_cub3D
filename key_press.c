@@ -6,13 +6,13 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:26:46 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:32:21 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 15:02:31 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3d.h"
+#include "cub3d.h"
 
-int		key_press(int key, t_screen *scr)
+int			key_press(int key, t_screen *scr)
 {
 	if (key == K_W || key == K_AR_U)
 		move_u_d(key, scr);
@@ -31,7 +31,7 @@ int		key_press(int key, t_screen *scr)
 	return (0);
 }
 
-void		move_u_d(int key, t_screen * scr)
+void		move_u_d(int key, t_screen *scr)
 {
 	if (key == K_W || key == K_AR_U)
 	{
@@ -53,7 +53,7 @@ void		move_u_d(int key, t_screen * scr)
 	}
 }
 
-void	move_l_r(int key, t_screen *scr)
+void		move_l_r(int key, t_screen *scr)
 {
 	if (key == K_A)
 	{

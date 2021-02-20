@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:27:21 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/20 14:29:42 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 15:11:01 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		map_info(t_screen *scr, t_count *count)
 {
 	char	*line;
-	int	result;
+	int		result;
 
 	init_screen(scr);
 	init_count(count);
@@ -30,7 +30,7 @@ void		map_info(t_screen *scr, t_count *count)
 	scr->line = line;
 }
 
-int		get_info(t_screen *scr, char *line, t_count *count)
+int			get_info(t_screen *scr, char *line, t_count *count)
 {
 	if (ft_strncmp(line, "R ", 2) == 0)
 		screen_size(scr, line + 2, ++count->size);
@@ -79,7 +79,7 @@ void		screen_size(t_screen *scr, char *line, int count)
 
 void		get_texture(char *line, char **s, int count)
 {
-	int	fd;
+	int		fd;
 
 	if (count != 1)
 		print_error("count direction is not one");
@@ -97,7 +97,7 @@ void		get_texture(char *line, char **s, int count)
 void		get_color(t_screen *scr, char *line, char c, int count)
 {
 	char	**rgb;
-	int	color;
+	int		color;
 
 	if (count != 1)
 		print_error("count color is not one");
@@ -106,7 +106,8 @@ void		get_color(t_screen *scr, char *line, char c, int count)
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
 		print_error("There is no RGB color");
 	check_color_factor(rgb);
-	color = ((ft_atoi(rgb[0]) * 256 * 256) + (ft_atoi(rgb[1]) * 256) + ft_atoi(rgb[2]));
+	color = ((ft_atoi(rgb[0]) * 256 * 256) + (ft_atoi(rgb[1]) * 256)
+			+ ft_atoi(rgb[2]));
 	ft_free2(rgb);
 	if (c == 'F')
 		scr->floor_color = color;

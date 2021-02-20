@@ -6,13 +6,13 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:27:11 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:27:13 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 15:09:13 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void		put_player(t_player * player, double radian)
+void		put_player(t_player *player, double radian)
 {
 	double	old_dirX;
 	double	old_planeX;
@@ -25,7 +25,7 @@ void		put_player(t_player * player, double radian)
 	player->planeY = old_planeX * sin(radian) + player->planeY * cos(radian);
 }
 
-void		make_player(t_screen * scr, int i, int j, int *player_num)
+void		make_player(t_screen *scr, int i, int j, int *player_num)
 {
 	int	degree;
 

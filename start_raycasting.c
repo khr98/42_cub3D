@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:27:37 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:27:40 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 15:13:28 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 void		make_basic(t_screen * scr, int x)
 {
 	scr->ray.cameraX = 2 * x / (double)scr->screen_width - 1;
-	scr->ray.dirX = scr->player.dirX + scr->player.planeX * scr->ray.cameraX;
-	scr->ray.dirY = scr->player.dirY + scr->player.planeY * scr->ray.cameraX;
+	scr->ray.dirX = scr->player.dirX +
+		scr->player.planeX * scr->ray.cameraX;
+	scr->ray.dirY = scr->player.dirY +
+		scr->player.planeY * scr->ray.cameraX;
 	scr->ray.mapX = (int)scr->player.posX;
 	scr->ray.mapY = (int)scr->player.posY;
 	scr->ray.deltaDistX = fabs(1 / scr->ray.dirX);
@@ -26,8 +28,8 @@ void		make_basic(t_screen * scr, int x)
 
 void		make_floor_ceiling(t_screen * scr)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
 	y = 0;
 	while (y < scr->screen_height)
@@ -47,7 +49,7 @@ void		make_floor_ceiling(t_screen * scr)
 
 void		exec_raycasting(t_screen *scr)
 {
-	int	x;
+	int		x;
 	
 	make_floor_ceiling(scr);
 	x = 0;

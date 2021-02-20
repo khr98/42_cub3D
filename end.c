@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:25:25 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:30:37 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 14:56:10 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		print_error(char *str)
 	exit(0);
 }
 
-int		ft_exit(int ret)
+int			ft_exit(int ret)
 {
 	exit(ret);
 	return (ret);
@@ -33,7 +33,7 @@ void		ft_free(void *s)
 
 void		ft_free2(char **s)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (s[i])

@@ -6,13 +6,13 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:26:55 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/19 00:52:17 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 15:06:22 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void			int_to_byte(unsigned char * arr, int num)
+void				int_to_byte(unsigned char *arr, int num)
 {
 	arr[0] = (unsigned char)(num);
 	arr[1] = (unsigned char)(num >> 8);
@@ -20,10 +20,10 @@ void			int_to_byte(unsigned char * arr, int num)
 	arr[3] = (unsigned char)(num >> 24);
 }
 
-void			make_bmp_header(t_screen *scr, int fd, int bytepadding)
+void				make_bmp_header(t_screen *scr, int fd, int bytepadding)
 {
 	unsigned char	bmp_header[54];
-	int		size;
+	int				size;
 
 	size = 54 + ((scr->screen_width * 3 + bytepadding) * scr->screen_height);
 	ft_memset(bmp_header, 0, 54);
@@ -34,15 +34,15 @@ void			make_bmp_header(t_screen *scr, int fd, int bytepadding)
 	bmp_header[14] = (unsigned char)40;
 	int_to_byte(bmp_header + 18, scr->screen_width);
 	int_to_byte(bmp_header + 22, scr->screen_height);
-	bmp_header[26] = (unsigned char) 1;
+	bmp_header[26] = (unsigned char)1;
 	bmp_header[28] = (unsigned char)24;
 	write(fd, bmp_header, 54);
 }
 
-void			draw_buf(t_screen *scr, int fd, int bytepadding)
+void				draw_buf(t_screen *scr, int fd, int bytepadding)
 {
-	int		i;
-	int		j;
+	int				i;
+	int				j;
 	unsigned char	zero[3];
 
 	i = -1;
@@ -59,10 +59,10 @@ void			draw_buf(t_screen *scr, int fd, int bytepadding)
 	}
 }
 
-void			start_bmp(t_screen *scr)
+void				start_bmp(t_screen *scr)
 {
-	int		fd;
-	int		bytepadding;
+	int				fd;
+	int				bytepadding;
 
 	exec_raycasting(scr);
 	start_sprite(scr);
@@ -75,12 +75,12 @@ void			start_bmp(t_screen *scr)
 	exit(0);
 }
 
-int			main(int argc, char *argv[])
+int					main(int argc, char *argv[])
 {
-	t_screen	scr;
-	t_count		count;
-	int		save;
-	
+	t_screen		scr;
+	t_count			count;
+	int				save;
+
 	command_num(argc, argv[2], &save);
 	scr.fd = open(argv[1], O_RDONLY);
 	if (scr.fd == -1)

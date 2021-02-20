@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:27:03 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:27:04 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 15:07:56 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		make_buffer(t_screen *scr)
 		scr->z_buf[i] = 0;
 }
 
-void		make_texture(t_screen * scr)
+void		make_texture(t_screen *scr)
 {
 	int	i;
 	int	j;
@@ -45,7 +45,8 @@ void		make_texture(t_screen * scr)
 	i = -1;
 	while (++i < 5)
 	{
-		if (!(scr->texture[i] = (int *)malloc(sizeof(int) * (TEX_HEIGHT * TEX_WIDTH))))
+		if (!(scr->texture[i] = (int *)malloc(sizeof(int) *
+						(TEX_HEIGHT * TEX_WIDTH))))
 			print_error("mallc fail");
 		j = -1;
 		while (++j < TEX_HEIGHT * TEX_WIDTH)

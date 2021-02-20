@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 14:27:10 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/20 14:29:55 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 14:55:38 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void		check_color_factor(char **rgb)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (rgb[i])
@@ -34,10 +34,10 @@ void		check_color_factor(char **rgb)
 	}
 }
 
-int		search_file(char *line, char *xpm)
+int			search_file(char *line, char *xpm)
 {
-	int	len;
-	int	xpm_len;
+	int		len;
+	int		xpm_len;
 	char	*file;
 
 	file = remove_space(line);
@@ -49,13 +49,12 @@ int		search_file(char *line, char *xpm)
 	if (!ft_strncmp(file, xpm, ft_strlen(file)))
 		return (1);
 	return (0);
-
 }
 
 void		factor_is_digit(char **s)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (s[i])

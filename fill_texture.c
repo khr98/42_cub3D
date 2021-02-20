@@ -6,13 +6,13 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:26:14 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:30:59 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 14:56:41 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void		make_image(t_screen * scr, int *texture, char *path, t_img *img)
+void		make_image(t_screen *scr, int *texture, char *path, t_img *img)
 {
 	int	x;
 	int	y;
@@ -35,7 +35,7 @@ void		make_image(t_screen * scr, int *texture, char *path, t_img *img)
 	mlx_destroy_image(scr->mlx, img->img);
 }
 
-void		fill_texture(t_screen * scr)
+void		fill_texture(t_screen *scr)
 {
 	t_img	img;
 

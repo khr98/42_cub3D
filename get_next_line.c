@@ -6,15 +6,15 @@
 /*   By: hyerkim <hyerkim@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 19:56:01 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:31:43 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 14:58:25 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			get_next_line_strchr(char *s, int c)
+int				get_next_line_strchr(char *s, int c)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	while (s[i])
@@ -30,7 +30,7 @@ int			get_next_line_strchr(char *s, int c)
 
 char			*buf_to_line(char **str, char **line, int fd, int read_size)
 {
-	int		i;
+	int			i;
 	char		*temp;
 
 	i = get_next_line_strchr(str[fd], '\n');
@@ -65,7 +65,7 @@ char			*make_str(char **str, char *buf, int fd)
 	return (str[fd]);
 }
 
-int			check_file(int read_size, char **str, char **line, int fd)
+int				check_file(int read_size, char **str, char **line, int fd)
 {
 	if (read_size <= 0 && str[fd] == NULL)
 	{
@@ -76,11 +76,11 @@ int			check_file(int read_size, char **str, char **line, int fd)
 	return (0);
 }
 
-int			get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
-	static char 	*str[4096];
+	static char *str[4096];
 	char		*buf;
-	int		read_size;
+	int			read_size;
 
 	if (BUFFER_SIZE <= 0 || fd < 0 || line == NULL)
 		return (-1);

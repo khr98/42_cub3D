@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:27:30 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:27:31 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/20 15:12:29 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void		read_map(t_screen *scr, char *line)
 	make_sprite(scr);
 }
 
-int		find_width(t_list *lst)
+int			find_width(t_list *lst)
 {
-	int	result;
-	int	len;
+	int		result;
+	int		len;
 
 	result = 0;
 	while (lst)
@@ -50,8 +50,8 @@ int		find_width(t_list *lst)
 
 void		make_map_square(t_screen *scr, t_list *lst)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	scr->map_height = ft_lstsize(lst);
 	if (!(scr->map = (char **)malloc(sizeof(char *) * (scr->map_height))))
@@ -60,7 +60,8 @@ void		make_map_square(t_screen *scr, t_list *lst)
 	scr->map_width = find_width(lst);
 	while (lst)
 	{
-		if (!(scr->map[i] = (char *)malloc(sizeof(char) * (scr->map_width + 1))))
+		if (!(scr->map[i] = (char *)malloc(sizeof(char)
+						* (scr->map_width + 1))))
 			print_error("malloc fail");
 		j = 0;
 		while (j++ < (int)ft_strlen((char *)lst->content))
@@ -75,10 +76,10 @@ void		make_map_square(t_screen *scr, t_list *lst)
 
 void		fill_map(t_screen *scr, t_list *lst)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	*line;
-	int	player_num;
+	int		player_num;
 
 	i = -1;
 	player_num = 0;
@@ -101,11 +102,11 @@ void		fill_map(t_screen *scr, t_list *lst)
 		print_error("player is invaild");
 }
 
-void		make_sprite(t_screen * scr)
+void		make_sprite(t_screen *scr)
 {
-	int	x;
-	int	y;
-	int	i;
+	int		x;
+	int		y;
+	int		i;
 
 	if (!(scr->sprite = (t_sprite *)malloc(sizeof(t_sprite) * scr->sprite_num)))
 		print_error("sprite malloc fail");
