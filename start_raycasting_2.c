@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:27:52 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/17 11:34:17 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/21 13:32:04 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void		draw_line(t_screen *scr)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 
 	y = 0;
 	while (y < scr->screen_height)
@@ -33,35 +33,41 @@ void		draw_line(t_screen *scr)
 
 void		exec_texture(t_screen *scr, int x)
 {
-	int 	y;
-	int 	color;
+	int		y;
+	int		color;
 
 	if (scr->ray.side <= 1)
-		scr->ray.wallX = scr->player.posY + scr->ray.perpWallDist * scr->ray.dirY;
+		scr->ray.wallX = scr->player.posY + scr->ray.perpWallDist
+			* scr->ray.dirY;
 	else
-		scr->ray.wallX = scr->player.posX + scr->ray.perpWallDist * scr->ray.dirX;
+		scr->ray.wallX = scr->player.posX + scr->ray.perpWallDist
+			* scr->ray.dirX;
 	scr->ray.wallX -= floor(scr->ray.wallX);
 	scr->ray.texX = (int)(scr->ray.wallX * (double)TEX_WIDTH);
 	if (scr->ray.side == 1 || scr->ray.side == 2)
 		scr->ray.texX = TEX_WIDTH - scr->ray.texX - 1;
 	scr->ray.step = 1.0 * TEX_HEIGHT / scr->ray.lineHeight;
-	scr->ray.texPos = (scr->ray.drawStart - scr->screen_height / 2 + scr->ray.lineHeight / 2) * scr->ray.step;
+	scr->ray.texPos = (scr->ray.drawStart - scr->screen_height
+			/ 2 + scr->ray.lineHeight / 2) * scr->ray.step;
 	y = scr->ray.drawStart - 1;
 	while (++y < scr->ray.drawEnd)
 	{
 		scr->ray.texY = (int)scr->ray.texPos & (TEX_HEIGHT - 1);
 		scr->ray.texPos += scr->ray.step;
-		color = scr->texture[scr->ray.side][TEX_HEIGHT * scr->ray.texY + scr->ray.texX];
+		color = scr->texture[scr->ray.side][TEX_HEIGHT
+			* scr->ray.texY + scr->ray.texX];
 		scr->buf[y][x] = color;
 	}
 }
 
-void		wall(t_screen * scr)
+void		wall(t_screen *scr)
 {
 	if (scr->ray.side <= 1)
-		scr->ray.perpWallDist = (scr->ray.mapX - scr->player.posX + (1 - scr->ray.stepX) / 2) / scr->ray.dirX;
+		scr->ray.perpWallDist = (scr->ray.mapX - scr->player.posX
+				+ (1 - scr->ray.stepX) / 2) / scr->ray.dirX;
 	else
-		scr->ray.perpWallDist = (scr->ray.mapY - scr->player.posY + (1 - scr->ray.stepY) / 2) / scr->ray.dirY;
+		scr->ray.perpWallDist = (scr->ray.mapY - scr->player.posY
+				+ (1 - scr->ray.stepY) / 2) / scr->ray.dirY;
 	scr->ray.lineHeight = (int)(scr->screen_height / scr->ray.perpWallDist);
 	scr->ray.drawStart = -scr->ray.lineHeight / 2 + scr->screen_height / 2;
 	if (scr->ray.drawStart < 0)
@@ -71,7 +77,7 @@ void		wall(t_screen * scr)
 		scr->ray.drawEnd = scr->screen_height - 1;
 }
 
-void		make_dda(t_screen * scr)
+void		make_dda(t_screen *scr)
 {
 	while (scr->ray.hit == 0)
 	{
@@ -98,26 +104,30 @@ void		make_dda(t_screen * scr)
 	}
 }
 
-void		make_sideDist(t_screen * scr)
+void		make_sidedist(t_screen *scr)
 {
 	if (scr->ray.dirX < 0)
 	{
 		scr->ray.stepX = -1;
-		scr->ray.sideDistX = (scr->player.posX - scr->ray.mapX) * scr->ray.deltaDistX;
+		scr->ray.sideDistX = (scr->player.posX - scr->ray.mapX)
+			* scr->ray.deltaDistX;
 	}
 	else
 	{
 		scr->ray.stepX = 1;
-		scr->ray.sideDistX = (scr->ray.mapX + 1.0 - scr->player.posX) * scr->ray.deltaDistX;
+		scr->ray.sideDistX = (scr->ray.mapX + 1.0 - scr->player.posX)
+			* scr->ray.deltaDistX;
 	}
 	if (scr->ray.dirY < 0)
 	{
 		scr->ray.stepY = -1;
-		scr->ray.sideDistY = (scr->player.posY - scr->ray.mapY) * scr->ray.deltaDistY;
+		scr->ray.sideDistY = (scr->player.posY - scr->ray.mapY)
+			* scr->ray.deltaDistY;
 	}
 	else
 	{
 		scr->ray.stepY = 1;
-		scr->ray.sideDistY = (scr->ray.mapY + 1.0 - scr->player.posY) * scr->ray.deltaDistY;
+		scr->ray.sideDistY = (scr->ray.mapY + 1.0 - scr->player.posY)
+			* scr->ray.deltaDistY;
 	}
 }

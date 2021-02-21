@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:26:02 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/20 14:30:41 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/21 13:33:11 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ void			draw_line(t_screen *scr);
 void			exec_texture(t_screen *scr, int x);
 void			wall(t_screen * scr);
 void			make_dda(t_screen * scr);
-void			make_sideDist(t_screen * scr);
+void			make_sidedist(t_screen * scr);
 
 void			make_basic(t_screen * scr, int x);
 void			make_floor_ceiling(t_screen * scr);
