@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:28:07 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/21 13:51:17 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/21 21:31:18 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,6 @@ void			sort_sprite(t_screen *scr)
 	t_sprite	temp;
 
 	i = -1;
-	while (++i < scr->sprite_num)
-	{
-		scr->sprite[i].distance = ((scr->player.posX - scr->sprite[i].x) *
-				(scr->player.posX - scr->sprite[i].x) + (scr->player.posY
-					- scr->sprite[i].y) * (scr->player.posY
-						- scr->sprite[i].y));
-	}
-	i = -1;
 	while (++i < scr->sprite_num - 1)
 	{
 		j = -1;
@@ -94,16 +86,8 @@ void			sort_sprite(t_screen *scr)
 	}
 }
 
-void			start_sprite(t_screen *scr)
+void			sprite_location(t_screen *scr, int i)
 {
-	int			i;
-	int			j;
-	int			stripe;
-
-	sort_sprite(scr);
-	i = -1;
-	while (++i < scr->sprite_num)
-	{
 		scr->ray_sprite.rDistX = scr->sprite[i].x - scr->player.posX;
 		scr->ray_sprite.rDistY = scr->sprite[i].y - scr->player.posY;
 		scr->ray_sprite.inverse = 1.0 / (scr->player.dirY * scr->player.planeX
@@ -116,6 +100,28 @@ void			start_sprite(t_screen *scr)
 				* scr->ray_sprite.rDistY);
 		scr->ray_sprite.screenX = (int)((scr->screen_width / 2)
 				* (1 + scr->ray_sprite.transX / scr->ray_sprite.transY));
+}
+
+void			start_sprite(t_screen *scr)
+{
+	int			i;
+	int			j;
+	int			stripe;
+
+
+	i = -1;
+	while (++i < scr->sprite_num)
+	{
+		scr->sprite[i].distance = ((scr->player.posX - scr->sprite[i].x) *
+				(scr->player.posX - scr->sprite[i].x) + (scr->player.posY
+					- scr->sprite[i].y) * (scr->player.posY
+						- scr->sprite[i].y));
+	}
+	sort_sprite(scr);
+	i = -1;
+	while (++i < scr->sprite_num)
+	{
+		sprite_location(scr, i);
 		draw_sprite_ud(scr);
 		stripe = scr->ray_sprite.drawStartX;
 		while (stripe < scr->ray_sprite.drawEndX)
