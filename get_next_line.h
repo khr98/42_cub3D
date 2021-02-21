@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 20:10:26 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/07 00:28:56 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/21 22:33:19 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #  define BUFFER_SIZE 4096
 # endif
 
-int			get_next_line_strchr(char *s, int c);
+int				get_next_line_strchr(char *s, int c);
 char			*buf_to_line(char **str, char **line, int fd, int read_size);
 char			*make_str(char **str, char *buf, int fd);
 int				check_file(int read_size, char **str, char **line, int fd);
