@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:27:21 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/20 15:11:01 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/22 00:05:57 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void		get_texture(char *line, char **s, int count)
 	line = remove_space(line);
 	if (!line)
 		print_error("there is no texture file path");
-	if (!(search_file(line, ".xpm")))
+	if (!(search_file(line)))
 		print_error("there is no xpm file");
 	if ((fd = open(line, O_RDONLY)) == -1)
 		print_error("texture path is invaild");

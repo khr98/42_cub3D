@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 14:27:10 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/20 14:55:38 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/22 00:05:58 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,18 @@ void		check_color_factor(char **rgb)
 	}
 }
 
-int			search_file(char *line, char *xpm)
+int			search_file(char *line)
 {
-	int		len;
-	int		xpm_len;
-	char	*file;
+	int		i;
 
-	file = remove_space(line);
-	len = (int)ft_strlen(line);
-	xpm_len = (int)ft_strlen(xpm);
-	if (len <= xpm_len)
+	i = 0;
+	if ((int)ft_strlen(line) < (int)ft_strlen(".xpm"))
 		print_error("file path is wrong");
-	file = line + (len - xpm_len);
-	if (!ft_strncmp(file, xpm, ft_strlen(file)))
-		return (1);
-	return (0);
+	while (line[i] != '.' && line[i + 1] != 'x')
+		i++;
+	if (!ft_strncmp(line + i, ".xpm", 4))
+		return (0);
+	return (1);
 }
 
 void		factor_is_digit(char **s)

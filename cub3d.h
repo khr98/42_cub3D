@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:26:02 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/21 22:32:05 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/22 00:06:17 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,7 @@ void				is_info_invaild(t_screen *scr);
 void				is_map_invaild(t_screen *scr);
 
 void				check_color_factor(char **rgb);
-int					search_file(char *line, char *xpm);
+int					search_file(char *line);
 void				factor_is_digit(char **s);
 
 #endif
