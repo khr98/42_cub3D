@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:27:11 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/20 15:09:13 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/21 13:17:40 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void		put_player(t_player *player, double radian)
 {
-	double	old_dirX;
-	double	old_planeX;
+	double	old_dirx;
+	double	old_planex;
 
-	old_dirX = player->dirX;
-	player->dirX = old_dirX * cos(radian) - player->dirY * sin(radian);
-	player->dirY = old_dirX * sin(radian) + player->dirY * cos(radian);
-	old_planeX = player->planeX;
-	player->planeX = old_planeX * cos(radian) - player->planeY * sin(radian);
-	player->planeY = old_planeX * sin(radian) + player->planeY * cos(radian);
+	old_dirx = player->dirX;
+	player->dirX = old_dirx * cos(radian) - player->dirY * sin(radian);
+	player->dirY = old_dirx * sin(radian) + player->dirY * cos(radian);
+	old_planex = player->planeX;
+	player->planeX = old_planex * cos(radian) - player->planeY * sin(radian);
+	player->planeY = old_planex * sin(radian) + player->planeY * cos(radian);
 }
 
 void		make_player(t_screen *scr, int i, int j, int *player_num)
