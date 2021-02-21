@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:26:46 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/20 15:02:31 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/21 22:01:03 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,21 @@ void		move_u_d(int key, t_screen *scr)
 {
 	if (key == K_W || key == K_AR_U)
 	{
-		if (scr->map[(int)(scr->player.posX + scr->player.dirX *
-					scr->player.moveSpeed)][(int)(scr->player.posY)] != '1')
-			scr->player.posX += scr->player.dirX * scr->player.moveSpeed;
-		if (scr->map[(int)(scr->player.posX)][(int)(scr->player.posY +
-					scr->player.dirY * scr->player.moveSpeed)] != '1')
-			scr->player.posY += scr->player.dirY * scr->player.moveSpeed;
+		if (scr->map[(int)(scr->player.posx + scr->player.dirx *
+					scr->player.movespeed)][(int)(scr->player.posy)] != '1')
+			scr->player.posx += scr->player.dirx * scr->player.movespeed;
+		if (scr->map[(int)(scr->player.posx)][(int)(scr->player.posy +
+					scr->player.diry * scr->player.movespeed)] != '1')
+			scr->player.posy += scr->player.diry * scr->player.movespeed;
 	}
 	if (key == K_S || key == K_AR_D)
 	{
-		if (scr->map[(int)(scr->player.posX - scr->player.dirX *
-					scr->player.moveSpeed)][(int)(scr->player.posY)] != '1')
-			scr->player.posX -= scr->player.dirX * scr->player.moveSpeed;
-		if (scr->map[(int)(scr->player.posX)][(int)(scr->player.posY -
-					scr->player.dirY * scr->player.moveSpeed)] != '1')
-			scr->player.posY -= scr->player.dirY * scr->player.moveSpeed;
+		if (scr->map[(int)(scr->player.posx - scr->player.dirx *
+					scr->player.movespeed)][(int)(scr->player.posy)] != '1')
+			scr->player.posx -= scr->player.dirx * scr->player.movespeed;
+		if (scr->map[(int)(scr->player.posx)][(int)(scr->player.posy -
+					scr->player.diry * scr->player.movespeed)] != '1')
+			scr->player.posy -= scr->player.diry * scr->player.movespeed;
 	}
 }
 
@@ -57,21 +57,21 @@ void		move_l_r(int key, t_screen *scr)
 {
 	if (key == K_A)
 	{
-		if (scr->map[(int)(scr->player.posX)][(int)(scr->player.posY +
-					scr->player.dirX * scr->player.moveSpeed)] != '1')
-			scr->player.posY += scr->player.dirX * scr->player.moveSpeed;
-		if (scr->map[(int)(scr->player.posX - scr->player.dirY *
-					scr->player.moveSpeed)][(int)scr->player.posY] != '1')
-			scr->player.posX -= scr->player.dirY * scr->player.moveSpeed;
+		if (scr->map[(int)(scr->player.posx)][(int)(scr->player.posy +
+					scr->player.dirx * scr->player.movespeed)] != '1')
+			scr->player.posy += scr->player.dirx * scr->player.movespeed;
+		if (scr->map[(int)(scr->player.posx - scr->player.diry *
+					scr->player.movespeed)][(int)scr->player.posy] != '1')
+			scr->player.posx -= scr->player.diry * scr->player.movespeed;
 	}
 	if (key == K_D)
 	{
-		if (scr->map[(int)(scr->player.posX)][(int)(scr->player.posY -
-					scr->player.dirX * scr->player.moveSpeed)] != '1')
-			scr->player.posY -= scr->player.dirX * scr->player.moveSpeed;
-		if (scr->map[(int)(scr->player.posX + scr->player.dirY *
-					scr->player.moveSpeed)][(int)scr->player.posY] != '1')
-			scr->player.posX += scr->player.dirY * scr->player.moveSpeed;
+		if (scr->map[(int)(scr->player.posx)][(int)(scr->player.posy -
+					scr->player.dirx * scr->player.movespeed)] != '1')
+			scr->player.posy -= scr->player.dirx * scr->player.movespeed;
+		if (scr->map[(int)(scr->player.posx + scr->player.diry *
+					scr->player.movespeed)][(int)scr->player.posy] != '1')
+			scr->player.posx += scr->player.diry * scr->player.movespeed;
 	}
 }
 
@@ -80,16 +80,16 @@ void		rotate_right(t_screen *scr)
 	double	old_dir_x;
 	double	old_plane_x;
 
-	old_dir_x = scr->player.dirX;
-	old_plane_x = scr->player.planeX;
-	scr->player.dirX = scr->player.dirX * cos(-scr->player.rotSpeed) -
-						scr->player.dirY * sin(-scr->player.rotSpeed);
-	scr->player.dirY = old_dir_x * sin(-scr->player.rotSpeed) +
-						scr->player.dirY * cos(-scr->player.rotSpeed);
-	scr->player.planeX = scr->player.planeX * cos(-scr->player.rotSpeed) -
-							scr->player.planeY * sin(-scr->player.rotSpeed);
-	scr->player.planeY = old_plane_x * sin(-scr->player.rotSpeed) +
-							scr->player.planeY * cos(-scr->player.rotSpeed);
+	old_dir_x = scr->player.dirx;
+	old_plane_x = scr->player.planex;
+	scr->player.dirx = scr->player.dirx * cos(-scr->player.rotspeed) -
+						scr->player.diry * sin(-scr->player.rotspeed);
+	scr->player.diry = old_dir_x * sin(-scr->player.rotspeed) +
+						scr->player.diry * cos(-scr->player.rotspeed);
+	scr->player.planex = scr->player.planex * cos(-scr->player.rotspeed) -
+							scr->player.planey * sin(-scr->player.rotspeed);
+	scr->player.planey = old_plane_x * sin(-scr->player.rotspeed) +
+							scr->player.planey * cos(-scr->player.rotspeed);
 }
 
 void		rotate_left(t_screen *scr)
@@ -97,14 +97,14 @@ void		rotate_left(t_screen *scr)
 	double	old_dir_x;
 	double	old_plane_x;
 
-	old_dir_x = scr->player.dirX;
-	old_plane_x = scr->player.planeX;
-	scr->player.dirX = scr->player.dirX * cos(scr->player.rotSpeed) -
-						scr->player.dirY * sin(scr->player.rotSpeed);
-	scr->player.dirY = old_dir_x * sin(scr->player.rotSpeed) +
-						scr->player.dirY * cos(scr->player.rotSpeed);
-	scr->player.planeX = scr->player.planeX * cos(scr->player.rotSpeed) -
-						scr->player.planeY * sin(scr->player.rotSpeed);
-	scr->player.planeY = old_plane_x * sin(scr->player.rotSpeed) +
-						scr->player.planeY * cos(scr->player.rotSpeed);
+	old_dir_x = scr->player.dirx;
+	old_plane_x = scr->player.planex;
+	scr->player.dirx = scr->player.dirx * cos(scr->player.rotspeed) -
+						scr->player.diry * sin(scr->player.rotspeed);
+	scr->player.diry = old_dir_x * sin(scr->player.rotspeed) +
+						scr->player.diry * cos(scr->player.rotspeed);
+	scr->player.planex = scr->player.planex * cos(scr->player.rotspeed) -
+						scr->player.planey * sin(scr->player.rotspeed);
+	scr->player.planey = old_plane_x * sin(scr->player.rotspeed) +
+						scr->player.planey * cos(scr->player.rotspeed);
 }

@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:27:37 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/21 13:32:27 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/21 22:06:40 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void		make_basic(t_screen *scr, int x)
 {
-	scr->ray.cameraX = 2 * x / (double)scr->screen_width - 1;
-	scr->ray.dirX = scr->player.dirX +
-		scr->player.planeX * scr->ray.cameraX;
-	scr->ray.dirY = scr->player.dirY +
-		scr->player.planeY * scr->ray.cameraX;
-	scr->ray.mapX = (int)scr->player.posX;
-	scr->ray.mapY = (int)scr->player.posY;
-	scr->ray.deltaDistX = fabs(1 / scr->ray.dirX);
-	scr->ray.deltaDistY = fabs(1 / scr->ray.dirY);
+	scr->ray.camera_x = 2 * x / (double)scr->screen_width - 1;
+	scr->ray.dir_x = scr->player.dirx +
+		scr->player.planex * scr->ray.camera_x;
+	scr->ray.dir_y = scr->player.diry +
+		scr->player.planey * scr->ray.camera_x;
+	scr->ray.map_x = (int)scr->player.posx;
+	scr->ray.map_y = (int)scr->player.posy;
+	scr->ray.delta_distx = fabs(1 / scr->ray.dir_x);
+	scr->ray.delta_disty = fabs(1 / scr->ray.dir_y);
 	scr->ray.hit = 0;
 }
 
@@ -60,7 +60,7 @@ void		exec_raycasting(t_screen *scr)
 		make_dda(scr);
 		wall(scr);
 		exec_texture(scr, x);
-		scr->z_buf[x] = scr->ray.perpWallDist;
+		scr->z_buf[x] = scr->ray.perpwall_dist;
 		x++;
 	}
 }

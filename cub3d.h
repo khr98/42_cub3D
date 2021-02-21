@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:26:02 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/21 13:33:11 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/21 22:11:56 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,40 +54,40 @@ typedef	struct		s_img
 
 typedef	struct		s_ray
 {
-	double		cameraX;
-	double		dirX;
-	double		dirY;
-	int		mapX;
-	int		mapY;
-	double		sideDistX;
-	double		sideDistY;
-	double		deltaDistX;
-	double		deltaDistY;
-	double		perpWallDist;
-	int		stepX;
-	int		stepY;
+	double		camera_x;
+	double		dir_x;
+	double		dir_y;
+	int		map_x;
+	int		map_y;
+	double		side_distx;
+	double		side_disty;
+	double		delta_distx;
+	double		delta_disty;
+	double		perpwall_dist;
+	int		stepx;
+	int		stepy;
 	int		hit;
 	int		side;
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
-	double		wallX;
-	int		texX;
-	int		texY;
+	int		line_height;
+	int		drawstart;
+	int		drawend;
+	double		wall_x;
+	int		tex_x;
+	int		tex_y;
 	double		step;
-	double		texPos;
+	double		tex_pos;
 }			t_ray;
 
 typedef	struct		s_player
 {
-	double		posX;
-	double		posY;
-	double		dirX;
-	double		dirY;
-	double		planeX;
-	double		planeY;
-	double		moveSpeed;
-	double		rotSpeed;
+	double		posx;
+	double		posy;
+	double		dirx;
+	double		diry;
+	double		planex;
+	double		planey;
+	double		movespeed;
+	double		rotspeed;
 }			t_player;
 
 typedef	struct		s_sprite
@@ -99,21 +99,21 @@ typedef	struct		s_sprite
 
 typedef	struct		s_ray_sprite
 {
-	double		rDistX;
-	double		rDistY;
+	double		rdist_x;
+	double		rdist_y;
 	double		inverse;
-	double		transX;
-	double		transY;
-	int		screenX;
+	double		trans_x;
+	double		trans_y;
+	int		screen_x;
 	int		height;
 	int		width;
-	int		drawStartX;
-	int		drawStartY;
-	int		drawEndX;
-	int		drawEndY;
-	int		texX;
-	int		texY;
-	int		spriteScrX;
+	int		drawstart_x;
+	int		drawstart_y;
+	int		drawend_x;
+	int		drawend_y;
+	int		tex_x;
+	int		tex_y;
+	int		sprite_screen_x;
 }			t_ray_sprite;
 
 typedef	struct		s_screen
@@ -199,8 +199,8 @@ void			draw_sprite(t_screen *scr, int pattern);
 void			start_sprite(t_screen *scr);
 
 void			int_to_byte(unsigned char * arr, int num);
-void			make_bmp_header(t_screen *scr, int fd, int bytePadding);
-void			draw_buf(t_screen *scr, int fd, int bytePadding);
+void			make_bmp_header(t_screen *scr, int fd, int bytepadding);
+void			draw_buf(t_screen *scr, int fd, int bytepadding);
 void			start_bmp(t_screen *scr);
 int			main(int argc, char *argv[]);
 

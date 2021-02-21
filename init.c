@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:26:29 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/19 00:55:25 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/21 21:55:09 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ void	init_screen(t_screen *scr)
 	scr->sprite_num = 0;
 	scr->buf = NULL;
 	scr->texture = NULL;
-	scr->player.posX = 0;
-	scr->player.posY = 0;
-	scr->player.dirX = -1.0;
-	scr->player.dirY = 0;
-	scr->player.planeX = 0;
-	scr->player.planeY = 0.66;
-	scr->player.moveSpeed = 0.1;
-	scr->player.rotSpeed = 0.05;
+	scr->player.posx = 0;
+	scr->player.posy = 0;
+	scr->player.dirx = -1.0;
+	scr->player.diry = 0;
+	scr->player.planex = 0;
+	scr->player.planey = 0.66;
+	scr->player.movespeed = 0.1;
+	scr->player.rotspeed = 0.05;
 }
 
 void	init_count(t_count *count)
