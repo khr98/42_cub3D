@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:28:07 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/21 13:43:52 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/21 13:48:39 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,10 @@ void			draw_sprite(t_screen *scr, int stripe)
 	}
 }
 
-void			start_sprite(t_screen *scr)
+void			sort_sprite(t_screen *scr)
 {
 	int			i;
 	int			j;
-	int			stripe;
 	t_sprite	temp;
 
 	i = -1;
@@ -93,6 +92,14 @@ void			start_sprite(t_screen *scr)
 			}
 		}
 	}
+}
+
+void			start_sprite(t_screen *scr)
+{
+	int			i;
+	int			j;
+	int			stripe;
+
 	i = -1;
 	while (++i < scr->sprite_num)
 	{
