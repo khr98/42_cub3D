@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:28:07 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/21 22:15:15 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/21 22:22:46 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,18 +88,18 @@ void			sort_sprite(t_screen *scr)
 
 void			sprite_location(t_screen *scr, int i)
 {
-		scr->ray_sprite.rdist_x = scr->sprite[i].x - scr->player.posx;
-		scr->ray_sprite.rdist_y = scr->sprite[i].y - scr->player.posy;
-		scr->ray_sprite.inverse = 1.0 / (scr->player.diry * scr->player.planex
-				- scr->player.dirx * scr->player.planey);
-		scr->ray_sprite.trans_x = scr->ray_sprite.inverse * (scr->player.diry
-				* scr->ray_sprite.rdist_x - scr->player.dirx
-				* scr->ray_sprite.rdist_y);
-		scr->ray_sprite.trans_y = scr->ray_sprite.inverse * (-scr->player.planey
-				* scr->ray_sprite.rdist_x + scr->player.planex
-				* scr->ray_sprite.rdist_y);
-		scr->ray_sprite.screen_x = (int)((scr->screen_width / 2)
-				* (1 + scr->ray_sprite.trans_x / scr->ray_sprite.trans_y));
+	scr->ray_sprite.rdist_x = scr->sprite[i].x - scr->player.posx;
+	scr->ray_sprite.rdist_y = scr->sprite[i].y - scr->player.posy;
+	scr->ray_sprite.inverse = 1.0 / (scr->player.diry * scr->player.planex
+			- scr->player.dirx * scr->player.planey);
+	scr->ray_sprite.trans_x = scr->ray_sprite.inverse * (scr->player.diry
+			* scr->ray_sprite.rdist_x - scr->player.dirx
+			* scr->ray_sprite.rdist_y);
+	scr->ray_sprite.trans_y = scr->ray_sprite.inverse * (-scr->player.planey
+			* scr->ray_sprite.rdist_x + scr->player.planex
+			* scr->ray_sprite.rdist_y);
+	scr->ray_sprite.screen_x = (int)((scr->screen_width / 2)
+			* (1 + scr->ray_sprite.trans_x / scr->ray_sprite.trans_y));
 }
 
 void			start_sprite(t_screen *scr)
@@ -107,7 +107,6 @@ void			start_sprite(t_screen *scr)
 	int			i;
 	int			j;
 	int			stripe;
-
 
 	i = -1;
 	while (++i < scr->sprite_num)
