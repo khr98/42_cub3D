@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:27:21 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/22 00:05:57 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/25 17:27:11 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int			get_info(t_screen *scr, char *line, t_count *count)
 void		screen_size(t_screen *scr, char *line, int count)
 {
 	char	**result;
+	int		size1;
+	int		size2;
 
 	if (count != 1)
 		print_error("count size is not one");
@@ -69,10 +71,10 @@ void		screen_size(t_screen *scr, char *line, int count)
 	scr->screen_width = ft_atoi(result[0]);
 	scr->screen_height = ft_atoi(result[1]);
 	ft_free2(result);
-	if (scr->screen_width > 1920)
-		scr->screen_width = 1920;
-	if (scr->screen_height > 1080)
-		scr->screen_height = 1080;
+	if (scr->screen_width > 1960)
+		scr->screen_width = 1960;
+	if (scr->screen_height > 1440)
+		scr->screen_height = 1440;
 	if (!scr->screen_width || !scr->screen_height)
 		print_error("size is invaild!");
 }

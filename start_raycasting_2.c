@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:27:52 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/21 22:10:51 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/25 13:16:15 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		draw_line(t_screen *scr)
 		x = 0;
 		while (x < scr->screen_width)
 		{
-			scr->img.data[y * scr->screen_width + x] = scr->buf[y][x];
+			scr->img.data[y * scr->img.size_l / scr->img.bpp * 8 + x] = scr->buf[y][x];
 			x++;
 		}
 		y++;

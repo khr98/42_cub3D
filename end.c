@@ -6,7 +6,7 @@
 /*   By: hyerkim <hyerkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 11:25:25 by hyerkim           #+#    #+#             */
-/*   Updated: 2021/02/20 14:56:10 by hyerkim          ###   ########.fr       */
+/*   Updated: 2021/02/25 17:15:12 by hyerkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		print_error(char *str)
 {
+	ft_putstr("Error!\n");
 	ft_putstr(str);
 	write(1, "\n", 1);
 	exit(0);
